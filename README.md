@@ -22,7 +22,7 @@ A lightweight, high-performance 2D graphics library built with WebGL2. Provides 
 ### Via npm (coming soon)
 
 ```bash
-npm install webgl2-2d
+npm install rastersonance
 ```
 
 ### Local Setup
@@ -30,8 +30,8 @@ npm install webgl2-2d
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/webgl2-2d.git
-cd webgl-2-2d
+git clone https://github.com/yourusername/rastersonance.git
+cd rastersonance
 ```
 
 ## Quick Start
@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
 ## Project Structure
 
 ```
-webgl2-2d/
+rastersonance/
 ├── src/
 │   ├── index.js         # Main entry point (exports all public APIs)
 │   ├── graphics2d.js    # Graphics2D class (all drawing methods)
