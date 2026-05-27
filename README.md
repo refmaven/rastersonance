@@ -1,4 +1,4 @@
-# WebGL2 2D Graphics Library
+# rastersonance
 
 A lightweight, high-performance 2D graphics library built with WebGL2. Provides a familiar Canvas API-like interface with GPU acceleration for modern web applications.
 
