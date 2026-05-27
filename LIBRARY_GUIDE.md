@@ -1,6 +1,6 @@
 # Library Usage Guide
 
-This document explains how to use WebGL2 2D Graphics Library in your projects.
+This document explains how to use Rastersonance (a WebGL2 2D graphics library) in your projects.
 
 ## Import Methods
 
@@ -33,11 +33,11 @@ import * as Colors from './src/colors.js';
 Once published to npm:
 
 ```bash
-npm install webgl2-2d
+npm install rastersonance
 ```
 
 ```javascript
-import { Graphics2D, Color, Colors } from 'webgl2-2d';
+import { Graphics2D, Color, Colors } from 'rastersonance';
 ```
 
 ### Method 4: UMD Bundle (When built)
@@ -45,12 +45,14 @@ import { Graphics2D, Color, Colors } from 'webgl2-2d';
 For browser-only usage:
 
 ```html
-<script src="dist/webgl2-2d.min.js"></script>
+<script src="dist/rastersonance.min.js"></script>
 <script>
-    const graphics = new WebGL2D.Graphics2D(canvas);
-    graphics.fillRect(100, 100, 200, 150, WebGL2D.Color.rgb(255, 0, 0));
+    const graphics = new Rastersonance.Graphics2D(canvas);
+    graphics.fillRect(100, 100, 200, 150, Rastersonance.Color.rgb(255, 0, 0));
 </script>
 ```
+
+Note: the GitHub Actions workflow uploads `dist/*` as a build artifact. Download the artifact from the workflow run and use `dist/rastersonance.min.js` for browser usage.
 
 ---
 
