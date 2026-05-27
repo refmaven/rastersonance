@@ -1,0 +1,35 @@
+name: Build and upload dist
+
+on:
+  push:
+    branches: [ '**' ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          npm ci --prefer-offline --no-audit || true
+
+      - name: Build library
+        run: |
+          node build.js
+
+      - name: Show dist contents
+        run: ls -la dist || true
+
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/*
