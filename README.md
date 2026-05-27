@@ -25,35 +25,28 @@ A lightweight, high-performance 2D graphics library built with WebGL2. Provides 
 npm install rastersonance
 ```
 
-### Local Setup
+### Using the built bundle (recommended)
 
-Clone the repository:
+For browser usage, prefer the built UMD files in `dist/` (recommended) or install via npm when published.
 
-```bash
-git clone https://github.com/refmaven/rastersonance.git
-cd rastersonance
-```
+- Download or use `dist/rastersonance.min.js` and include it with a script tag (see Quick Start).
+- To build locally: run `npm run build` to generate `dist/`.
 
 ## Quick Start
 
-### ES6 Modules
+### Browser (UMD build)
 
-```javascript
-import { Graphics2D, Color, Colors } from './src/index.js';
+Include the built minified bundle and use the global `Rastersonance` object:
 
-// Create a graphics context
-const canvas = document.getElementById('myCanvas');
-const graphics = new Graphics2D(canvas);
-
-// Animation loop
-function animate() {
-    graphics.clear(Colors.BLACK);
-    graphics.fillRect(100, 100, 200, 150, Color.rgb(255, 0, 0));
-    graphics.fillCircle(300, 200, 50, Colors.GREEN);
-    graphics.strokeLine(0, 0, 400, 300, Colors.BLUE, 2);
-    requestAnimationFrame(animate);
-}
-animate();
+```html
+<script src="dist/rastersonance.min.js"></script>
+<script>
+    const canvas = document.getElementById('myCanvas');
+    const g = new Rastersonance.Graphics2D(canvas);
+    g.clear(Rastersonance.Colors.BLACK);
+    g.fillRect(100, 100, 200, 150, Rastersonance.Color.rgb(255, 0, 0));
+    requestAnimationFrame(function loop(){ requestAnimationFrame(loop); });
+</script>
 ```
 
 ## API Documentation

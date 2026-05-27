@@ -4,23 +4,11 @@ This document explains how to use Rastersonance (a WebGL2 2D graphics library) i
 
 ## Import Methods
 
-### Method 1: ES6 Modules (Recommended)
+Recommended: use the built UMD bundle (`dist/rastersonance.min.js`) for browser usage, or install via npm (future). Advanced users who need to work with source may import individual modules directly.
 
-This is the recommended approach for modern development:
+### Advanced: Source Imports
 
-```javascript
-import { Graphics2D, Color, Colors, Vec2, Mat3 } from './path/to/src/index.js';
-
-const canvas = document.getElementById('myCanvas');
-const graphics = new Graphics2D(canvas);
-
-graphics.clear(Colors.BLACK);
-graphics.fillRect(100, 100, 200, 150, Color.rgb(255, 0, 0));
-```
-
-### Method 2: Individual Imports
-
-You can also import specific modules:
+You can import specific modules from source if you want to build or modify the library yourself:
 
 ```javascript
 import { Graphics2D } from './src/graphics2d.js';
@@ -40,9 +28,9 @@ npm install rastersonance
 import { Graphics2D, Color, Colors } from 'rastersonance';
 ```
 
-### Method 4: UMD Bundle (When built)
+### UMD Bundle (When built)
 
-For browser-only usage:
+For browser-only usage, include the built minified bundle:
 
 ```html
 <script src="dist/rastersonance.min.js"></script>
