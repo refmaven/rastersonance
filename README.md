@@ -30,7 +30,7 @@ npm install rastersonance
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/rastersonance.git
+git clone https://github.com/refmaven/rastersonance.git
 cd rastersonance
 ```
 
