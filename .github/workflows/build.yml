@@ -2,34 +2,36 @@ name: Build and upload dist
 
 on:
   push:
-    branches: [ '**' ]
+    branches: [ "**" ]
   pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: 20
 
       - name: Install dependencies
-        run: |
-          npm ci --prefer-offline --no-audit || true
+        run: npm install
 
-      - name: Build library
-        run: |
-          node build.js
+      - name: Build library (ESM)
+        run: npx esbuild src/index.js --bundle --format=esm --minify --outfile=dist/rastersonance.esm.js
+
+      - name: Build library (UMD global)
+        run: npx esbuild src/index.js --bundle --format=iife --global-name=Rastersonance --minify --outfile=dist/rastersonance.umd.js
 
       - name: Show dist contents
-        run: ls -la dist || true
+        run: ls -la dist
 
       - name: Upload dist artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist/*
