@@ -40,11 +40,6 @@ jobs:
           cp LICENSE release/ || true
           cp package.json release/
 
-      - name: Zip release
-        run: |
-          cd release
-          zip -r ../rastersonance-${{ github.event.inputs.version }}.zip .
-
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
