@@ -29,7 +29,7 @@ not published to npm yet.
 for now:
 
 ```bash
-git clone <repo>
+git clone https://github.com/refmaven/rastersonance.git
 cd rastersonance
 npm install
 npm run build
