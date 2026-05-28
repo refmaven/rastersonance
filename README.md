@@ -22,13 +22,6 @@ still experimental. APIs may change.
 - animation/render loops
 - WebGL2-backed rendering
 
-## why i made this
-
-i wanted something that felt closer to canvas2d ergonomically, but rendered through WebGL2 instead.
-
-raw WebGL is powerful but pretty annoying for simple 2d rendering, so this project tries to sit somewhere in the middle:
-easy drawing API + GPU acceleration.
-
 ## installation
 
 not published to npm yet.
