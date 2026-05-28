@@ -1,7 +1,3 @@
-/**
- * TypeScript type definitions for WebGL2 2D Graphics Library
- */
-
 export type Color = [number, number, number, number];
 export type Vec2Array = [number, number];
 export type Point = [number, number];
