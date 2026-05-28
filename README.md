@@ -33,11 +33,13 @@ git clone <repo>
 cd rastersonance
 npm install
 npm run build
+```
 
 then use the files from dist/.
 
-quick example
+## quick example
 
+```html
 <canvas id="c"></canvas>
 
 <script src="dist/rastersonance.min.js"></script>
@@ -62,17 +64,18 @@ function loop() {
 
 loop();
 </script>
+```
 
-basic usage
-
+## basic usage
+```js
 const graphics = new Graphics2D(canvas);
-
+```
 if WebGL2 isn't supported, it'll throw an error.
 
-drawing
+## drawing
 
-rectangles
-
+## rectangles
+```js
 graphics.fillRect(100, 100, 200, 100, Colors.RED);
 
 graphics.strokeRect(
@@ -83,9 +86,9 @@ graphics.strokeRect(
     Colors.WHITE,
     2
 );
-
-circles
-
+```
+## circles
+```js
 graphics.fillCircle(300, 200, 50, Colors.GREEN);
 
 graphics.strokeCircle(
@@ -95,9 +98,9 @@ graphics.strokeCircle(
     Colors.WHITE,
     3
 );
-
-lines
-
+```
+## lines
+```js
 graphics.strokeLine(
     0,
     0,
@@ -106,9 +109,9 @@ graphics.strokeLine(
     Colors.CYAN,
     2
 );
-
-polygons
-
+```
+## polygons
+```js
 const points = [
     [300, 50],
     [380, 150],
@@ -118,17 +121,17 @@ const points = [
 ];
 
 graphics.fillPolygon(points, Colors.YELLOW);
-
-colors
-
+```
+## colors
+```js
 Color.rgb(255, 0, 0);
 
 Color.fromHex("#ff00ff");
 
 Color.random();
-
-predefined colors:
-
+```
+## predefined colors:
+```js
 Colors.WHITE
 Colors.BLACK
 Colors.RED
@@ -137,67 +140,34 @@ Colors.BLUE
 Colors.YELLOW
 Colors.CYAN
 Colors.MAGENTA
-
-resizing
-
+```
+## resizing
+```js
 graphics.resize(width, height);
-
-running the demo
-
+```
+## running the demo
+```bash
 npx http-server
-
+```
 or:
-
+```bash
 python -m http.server 3000
-
+```
 then open:
-
+```
 http://localhost:3000/examples/
+```
 
-project structure
+## current status
 
-src/
-├── index.js
-├── graphics2d.js
-├── math.js
-└── colors.js
+works pretty well for basic 2d rendering right now, but i'm still learning graphics programming and i might improve the architecture over time.
 
-current status
-
-works pretty well for basic 2d rendering right now, but i'm still learning graphics programming and improving the architecture over time.
-
-things i still want to improve:
-
-batching internals
-
-texture handling
-
-text rendering
-
-API cleanup
-
-performance testing
-
-better examples
-
-
-browser support
+## browser support
 
 requires WebGL2.
 
-tested mainly on modern chromium/firefox browsers.
+tested mainly on firefox.
 
-license
+## license
 
 MIT
-
-this version feels much more believable because:
-- less “corporate polished”
-- less marketing language
-- less fake certainty
-- more focused on intent than hype
-- shorter
-- sounds like an actual solo graphics programmer
-- admits limitations naturally
-
-that authenticity is usually *more* trustworthy than overproduced READMEs for indie graphics projects.
