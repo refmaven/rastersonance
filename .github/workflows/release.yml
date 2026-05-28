@@ -1,0 +1,57 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version (e.g. 1.0.0)"
+        required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build ESM
+        run: npx esbuild src/index.js --bundle --format=esm --minify --outfile=dist/rastersonance.esm.js
+
+      - name: Build UMD
+        run: npx esbuild src/index.js --bundle --format=iife --global-name=Rastersonance --minify --outfile=dist/rastersonance.umd.js
+
+      - name: Prepare release folder
+        run: |
+          mkdir release
+          cp -r src release/src
+          cp -r dist release/dist
+          cp README.md release/
+          cp LICENSE release/ || true
+          cp package.json release/
+
+      - name: Zip release
+        run: |
+          cd release
+          zip -r ../rastersonance-${{ github.event.inputs.version }}.zip .
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.event.inputs.version }}
+          name: Rastersonance v${{ github.event.inputs.version }}
+          files: |
+            rastersonance-${{ github.event.inputs.version }}.zip
+            dist/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
