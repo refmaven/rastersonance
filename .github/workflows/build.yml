@@ -27,6 +27,12 @@ jobs:
       - name: Build library (UMD global)
         run: npx esbuild src/index.js --bundle --format=iife --global-name=Rastersonance --minify --outfile=dist/rastersonance.umd.js
 
+      - name: Copy TypeScript definitions to dist
+        if: always()
+        run: |
+          mkdir -p dist
+          cp index.d.ts dist/index.d.ts || true
+
       - name: Show dist contents
         run: ls -la dist
 
